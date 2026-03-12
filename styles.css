@@ -1,124 +1,114 @@
-body{
-font-family:'Segoe UI',Tahoma,sans-serif;
-margin:0;
-background:#0b0b0d;
-color:white;
+body {
+font-family: 'Segoe UI', Tahoma, sans-serif;
+margin: 0;
+background: #0b0b0d;
+color: white;
 }
 
-header{
-text-align:center;
-padding:20px;
-background:linear-gradient(to bottom,#1a1a1f,#0b0b0d);
+header {
+text-align: center;
+padding: 20px;
+background: linear-gradient(to bottom, #1a1a1f, #0b0b0d);
 }
 
-.titulo{
-border-left:5px solid #bdff00;
-padding-left:15px;
-margin:30px 10px 20px 10px;
-font-size:1.2rem;
+.titulo {
+border-left: 5px solid #bdff00;
+padding-left: 15px;
+margin: 30px 10px 20px 10px;
+font-size: 1.2rem;
 }
 
-/* CARTELERA */
+/* cartelera */
 
-#stages{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px;
-padding:10px;
+#stages {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 15px;
+padding: 10px;
 }
 
-.stage{
-padding:15px;
-border-radius:10px;
-background:#141417;
+.stage {
+padding: 15px;
+border-radius: 10px;
 }
 
-.show{
-background:white;
-color:black;
-padding:10px;
-margin-top:8px;
-border-radius:6px;
-cursor:pointer;
-font-weight:bold;
-font-size:13px;
-text-align:center;
-transition:0.2s;
+.show {
+background: white;
+color: black;
+padding: 10px;
+margin-top: 8px;
+border-radius: 5px;
+cursor: pointer;
+font-weight: bold;
+font-size: 13px;
+text-align: center;
+transition: 0.2s;
 }
 
 .show:hover{
 transform:scale(1.03);
 }
 
-/* TIMELINE */
+/* timeline */
 
-#contenedor-scroll{
-background:#111;
-border-radius:15px;
-padding:10px;
-overflow-x:auto;
-border:1px solid #333;
-margin:10px;
+#contenedor-scroll {
+background: #111;
+border-radius: 15px;
+padding: 10px;
+overflow-x: auto;
+border: 1px solid #333;
+margin: 10px;
 }
 
-#mySchedule{
-position:relative;
-height:1400px;
-width:100%;
-min-width:800px;
-background-image:linear-gradient(#222 1px,transparent 1px);
-background-size:100% 100px;
+#mySchedule {
+position: relative;
+height: 1400px;
+width: 100%;
+min-width: 800px;
+background-image: linear-gradient(#222 1px, transparent 1px);
+background-size: 100% 100px;
 }
 
-.timelineBlock{
-position:absolute;
-border-radius:10px;
-padding:8px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-color:white;
-font-size:12px;
-box-shadow:0 6px 12px rgba(0,0,0,.6);
-z-index:2;
-border:2px solid rgba(255,255,255,0.2);
+.timelineBlock {
+position: absolute;
+border-radius: 8px;
+padding: 8px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+color: white;
+font-size: 12px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+z-index: 2;
+border: 2px solid rgba(255,255,255,0.2);
+overflow: hidden;
+animation: aparecer .25s ease;
 }
 
-/* COLUMNAS */
+/* columnas */
 
-.col-picnic{left:2%;width:30%;}
-.col-jogo{left:34%;width:30%;}
-.col-hideout{left:66%;width:30%;}
+.col-picnic { left: 2%; width: 30%; }
+.col-jogo { left: 34%; width: 30%; }
+.col-hideout { left: 66%; width: 30%; }
 
-/* COLORES */
+/* colores */
 
-.purple{
-background:rgba(166,68,210,0.85);
-border-color:#A644D2;
-}
+.purple { background-color: rgba(166, 68, 210, 0.8); border-color: #A644D2; }
+.orange { background-color: rgba(243, 146, 0, 0.8); border-color: #F39200; }
+.lightblue { background-color: rgba(75, 192, 244, 0.8); border-color: #4BC0F4; }
 
-.orange{
-background:rgba(243,146,0,0.85);
-border-color:#F39200;
-}
+/* boton borrar */
 
-.lightblue{
-background:rgba(75,192,244,0.85);
-border-color:#4BC0F4;
-}
-
-/* BOTON BORRAR */
-
-.btn-borrar{
-background:white;
-border:none;
-color:black;
-border-radius:50%;
-width:20px;
-height:20px;
-font-size:10px;
-cursor:pointer;
-font-weight:bold;
+.btn-borrar {
+background: white;
+border: none;
+color: black;
+border-radius: 50%;
+width: 20px;
+height: 20px;
+font-size: 10px;
+cursor: pointer;
+font-weight: bold;
 }
 
 .btn-borrar:hover{
@@ -126,31 +116,22 @@ background:red;
 color:white;
 }
 
-/* FOOTER */
+/* animacion */
 
-footer{
-text-align:center;
-margin-top:30px;
-font-size:12px;
-color:#888;
-padding-bottom:20px;
+@keyframes aparecer{
+from{
+opacity:0;
+transform:scale(.9);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
 }
 
-/* MOVIL */
+/* movil */
 
-@media (max-width:600px){
-
-header h1{
-font-size:1.4rem;
-}
-
-.show{
-font-size:11px;
-padding:8px;
-}
-
-#mySchedule{
-min-width:700px;
-}
-
+@media (max-width: 600px) {
+header h1 { font-size: 1.5rem; }
+.show { font-size: 11px; padding: 8px; }
 }

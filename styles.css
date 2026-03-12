@@ -1,9 +1,102 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 12 mar. 2026, 11:12:35
-    Author     : Luis Jose
-*/
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    margin: 0;
+    background: #0b0b0d;
+    color: white;
+}
 
+header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to bottom, #1a1a1f, #0b0b0d);
+}
+
+.titulo {
+    border-left: 5px solid #bdff00;
+    padding-left: 15px;
+    margin: 30px 10px 20px 10px;
+    font-size: 1.2rem;
+}
+
+/* --- Cartelera de Selección (Arriba) --- */
+#stages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 10px;
+}
+
+.stage { padding: 15px; border-radius: 10px; }
+.show {
+    background: white;
+    color: black;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* --- Línea de Tiempo (Abajo) --- */
+#contenedor-scroll {
+    background: #111;
+    border-radius: 15px;
+    padding: 10px;
+    overflow-x: auto; /* Permite deslizar de lado en el cel */
+    border: 1px solid #333;
+    margin: 10px;
+}
+
+#mySchedule {
+    position: relative;
+    height: 1400px; 
+    width: 100%;
+    min-width: 800px; /* Obliga a que los escenarios mantengan su forma en el cel */
+    background-image: linear-gradient(#222 1px, transparent 1px);
+    background-size: 100% 100px; 
+}
+
+.timelineBlock {
+    position: absolute;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    z-index: 2;
+    border: 2px solid rgba(255,255,255,0.2);
+    overflow: hidden;
+}
+
+/* Posición por columnas */
+.col-picnic { left: 2%; width: 30%; }
+.col-jogo { left: 34%; width: 30%; }
+.col-hideout { left: 66%; width: 30%; }
+
+/* Colores Translúcidos */
+.purple { background-color: rgba(166, 68, 210, 0.8) !important; border-color: #A644D2; }
+.orange { background-color: rgba(243, 146, 0, 0.8) !important; border-color: #F39200; }
+.lightblue { background-color: rgba(75, 192, 244, 0.8) !important; border-color: #4BC0F4; }
+
+.btn-borrar {
+    background: white;
+    border: none;
+    color: black;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* AJUSTES PARA CELULAR PEQUEÑO */
+@media (max-width: 600px) {
+    header h1 { font-size: 1.5rem; }
+    .show { font-size: 11px; padding: 8px; }
+}

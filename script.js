@@ -1,53 +1,45 @@
-const PIXELS_MINUTO = 1.66; 
-const HORA_CERO = 13 * 60; 
+const PIXELS_MINUTO = 1.66;
+const HORA_CERO = 13 * 60;
 
 const datosFestival = [
+
 { stage: "Stage Picnic", color: "purple", col: "col-picnic", shows: [
-{ artist: "Shel Dixon", time: "2:00PM - 2:30PM" },
-{ artist: "Jerry Di", time: "3:00PM - 3:30PM" },
-{ artist: "Kapo", time: "4:00PM - 4:50PM" },
-{ artist: "Yandel", time: "5:15PM - 6:15PM" },
-{ artist: "Young Miko", time: "6:45PM - 7:30PM" },
-{ artist: "Ozuna", time: "7:50PM - 8:50PM" },
-{ artist: "Maná", time: "9:15PM - 10:30PM" }
+{ artist: "Tapón", time: "1:45PM - 2:15PM" },
+{ artist: "Juan Duque", time: "2:45PM - 3:25PM" },
+{ artist: "Lunay", time: "3:45PM - 4:25PM" },
+{ artist: "Jhayco", time: "4:45PM - 5:45PM" },
+{ artist: "Mora", time: "6:25PM - 7:20PM" },
+{ artist: "Christina Aguilera", time: "8:00PM - 9:00PM" },
+{ artist: "Christian Nodal", time: "9:30PM - 10:30PM" }
 ]},
+
 { stage: "Stage Jogo", color: "orange", col: "col-jogo", shows: [
-{ artist: "Rising Sound", time: "1:00PM - 2:30PM" },
-{ artist: "Fuerza Dread", time: "2:30PM - 3:30PM" },
-{ artist: "Alpha Blondy", time: "4:00PM - 5:15PM" },
-{ artist: "Tarrus Riley", time: "5:45PM - 6:45PM" },
-{ artist: "Original Koffee", time: "7:15PM - 8:15PM" },
-{ artist: "Tyga", time: "8:45PM - 9:45PM" }
+{ artist: "Voodoo", time: "1:05PM - 1:45PM" },
+{ artist: "Sonámbulo", time: "2:15PM - 3:15PM" },
+{ artist: "Enanitos Verdes", time: "3:45PM - 4:45PM" },
+{ artist: "Bomba Estéreo", time: "5:35PM - 6:35PM" },
+{ artist: "Juanes", time: "7:00PM - 8:00PM" },
+{ artist: "Simple Plan", time: "9:00PM - 10:00PM" }
 ]},
+
 { stage: "Stage Hideout", color: "lightblue", col: "col-hideout", shows: [
-{ artist: "Diego C", time: "3:00PM - 5:00PM" },
-{ artist: "4BES • Khriztian GC", time: "5:00PM - 6:00PM" },
-{ artist: "Aria Vega", time: "6:10PM - 6:40PM" },
-{ artist: "Jessi G", time: "6:50PM - 7:30PM" },
-{ artist: "De La Rose", time: "7:30PM - 8:15PM" },
-{ artist: "Lasso", time: "9:00PM - 9:40PM" },
-{ artist: "Tokischa", time: "10:15PM - 11:00PM" },
-{ artist: "Rels B", time: "11:30PM - 12:30MN" },
-{ artist: "Kybba", time: "12:45MN - 1:45AM" }
+{ artist: "Sonia Sol", time: "1:00PM - 1:45PM" },
+{ artist: "AZN-L", time: "1:45PM - 3:15PM" },
+{ artist: "JOI", time: "3:30PM - 4:00PM" },
+{ artist: "Orishas", time: "4:30PM - 5:15PM" },
+{ artist: "Corina Smith", time: "5:40PM - 6:25PM" },
+{ artist: "Clarent", time: "7:20PM - 8:00PM" },
+{ artist: "Bryant Myers", time: "9:00PM - 9:45PM" },
+{ artist: "Trueno", time: "11:00PM - 12:00MN" },
+{ artist: "Danny Ocean", time: "12:30MN - 1:30AM" }
 ]}
+
 ];
 
 let misArtistas = [];
 
-/* cargar horario guardado */
-
-const guardado = localStorage.getItem("horarioPicnic");
-
-if(guardado){
-misArtistas = JSON.parse(guardado);
-}
-
-/* convertir hora a minutos */
-
-function aMinutos(t) {
-
+function aMinutos(t){
 let m = t.match(/(\d+):(\d+)(PM|AM|MN)/);
-
 let h = parseInt(m[1]);
 let min = parseInt(m[2]);
 let p = m[3];
@@ -59,23 +51,16 @@ if (p === "AM") h = (h === 12) ? 24 : h + 24;
 return h * 60 + min;
 }
 
-/* render */
-
-function renderItinerario() {
-
+function renderItinerario(){
 const contenedor = document.getElementById("mySchedule");
-
 contenedor.innerHTML = "";
 
-misArtistas.forEach((s, i) => {
-
+misArtistas.forEach((s,i)=>{
 const top = (s.ini - HORA_CERO) * PIXELS_MINUTO;
 const height = (s.fin - s.ini) * PIXELS_MINUTO;
 
 const div = document.createElement("div");
-
 div.className = `timelineBlock ${s.color} ${s.col}`;
-
 div.style.top = top + "px";
 div.style.height = (height - 4) + "px";
 
@@ -84,70 +69,40 @@ div.innerHTML =
 <button class="btn-borrar" onclick="borrarArtista(${i})">X</button>`;
 
 contenedor.appendChild(div);
-
 });
-
-/* guardar */
-
-localStorage.setItem("horarioPicnic", JSON.stringify(misArtistas));
 }
 
-/* borrar */
-
-function borrarArtista(i) {
-
-misArtistas.splice(i, 1);
-
+function borrarArtista(i){
+misArtistas.splice(i,1);
 renderItinerario();
 }
-
-/* generar cartelera */
 
 const grid = document.getElementById("stages");
 
-datosFestival.forEach(st => {
-
+datosFestival.forEach(st=>{
 let d = document.createElement("div");
-
 d.className = `stage ${st.color}`;
-
 d.innerHTML = `<h3>${st.stage}</h3>`;
 
-st.shows.forEach(sh => {
-
+st.shows.forEach(sh=>{
 let b = document.createElement("div");
-
 b.className = "show";
-
 b.innerHTML = `${sh.artist}<br>${sh.time}`;
 
-b.onclick = () => {
-
+b.onclick = ()=>{
 let ini = aMinutos(sh.time.split("-")[0]);
 let fin = aMinutos(sh.time.split("-")[1]);
 
-if (!misArtistas.find(x => x.artist === sh.artist)) {
-
-misArtistas.push({...sh, ini, fin, color: st.color, col: st.col});
-
+if(!misArtistas.find(x=>x.artist===sh.artist)){
+misArtistas.push({...sh,ini,fin,color:st.color,col:st.col});
 renderItinerario();
-
-} else {
-
+}else{
 alert("Este artista ya está en tu horario");
-
 }
-
 };
 
 d.appendChild(b);
-
 });
 
 grid.appendChild(d);
-
 });
-
-/* mostrar horario guardado */
-
-renderItinerario();

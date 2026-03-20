@@ -1,179 +1,196 @@
-body {
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    margin: 0;
-    background: #0b0b0d;
-    color: white;
+body{
+font-family:'Segoe UI',Tahoma,sans-serif;
+margin:0;
+background:linear-gradient(180deg,#1a1a1f,#0b0b0d);
+color:white;
 }
 
-header {
-    text-align: center;
-    padding: 20px;
-    background: linear-gradient(to bottom, #1a1a1f, #0b0b0d);
+/* HEADER */
+
+header{
+text-align:center;
+padding:20px;
 }
 
-.titulo {
-    border-left: 5px solid #bdff00;
-    padding-left: 15px;
-    margin: 30px 10px 20px 10px;
-    font-size: 1.2rem;
+header h1{
+margin:0;
+font-size:2rem;
+letter-spacing:2px;
 }
 
-/* --- Cartelera de Selección --- */
+header p{
+background:#bdff00;
+color:black;
+display:inline-block;
+padding:5px 15px;
+border-radius:20px;
+font-weight:bold;
+margin-top:10px;
+}
+
+/* TITULOS */
+
+.titulo{
+border-left:5px solid #bdff00;
+padding-left:15px;
+margin:30px 10px 20px 10px;
+font-size:1.2rem;
+}
+
+/* CARTELERA */
+
+#stages{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+padding:10px;
+}
 
 .stage{
-    padding:15px;
-    border-radius:15px;
-    text-align:center;
-    color:white;
-    font-weight:bold;
-}
-.stage { 
-    padding: 15px; 
-    border-radius: 10px; 
+padding:15px;
+border-radius:15px;
+text-align:center;
 }
 
-.show {
-    background: white;
-    color: black;
-    padding: 10px;
-    margin-top: 8px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 13px;
-    text-align: center;
-    transition: 0.2s;
+.stage h3{
+margin:0;
+padding:10px;
+border-radius:10px;
+font-size:14px;
+letter-spacing:1px;
 }
 
-.show:hover {
-    transform: scale(1.03);
+/* COLORES FLYER */
+
+.stage.purple h3{background:#A644D2;}
+.stage.orange h3{background:#F39200;}
+.stage.lightblue h3{background:#4BC0F4;}
+
+/* ARTISTAS */
+
+.show{
+background:white;
+color:black;
+padding:10px;
+margin-top:10px;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+font-size:12px;
+text-align:center;
+transition:0.2s;
+box-shadow:0 2px 6px rgba(0,0,0,0.3);
 }
 
-/* --- Línea de Tiempo --- */
-
-#contenedor-scroll {
-    background: #111;
-    border-radius: 15px;
-    padding: 10px;
-    overflow-x: auto;
-    border: 1px solid #333;
-    margin: 10px;
+.show:hover{
+transform:scale(1.05);
+background:#bdff00;
 }
 
-#mySchedule {
-    position: relative;
-    height: 1400px; 
-    width: 100%;
-    min-width: 800px;
-    background-image: linear-gradient(#222 1px, transparent 1px);
-    background-size: 100% 100px; 
+/* TIMELINE */
+
+#contenedor-scroll{
+background:#111;
+border-radius:15px;
+padding:10px;
+overflow-x:auto;
+border:1px solid #333;
+margin:10px;
 }
 
-/* --- Bloques de artistas --- */
-
-.timelineBlock {
-    position: absolute;
-    border-radius: 8px;
-    padding: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    font-size: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    z-index: 2;
-    border: 2px solid rgba(255,255,255,0.2);
-    overflow: hidden;
-    animation: aparecer 0.25s ease;
+#mySchedule{
+position:relative;
+height:1400px;
+width:100%;
+min-width:800px;
+background-image:linear-gradient(#333 1px,transparent 1px);
+background-size:100% 80px;
 }
 
-/* --- Posición por columnas --- */
+/* BLOQUES */
 
-.col-picnic { left: 2%; width: 30%; }
-.col-jogo { left: 34%; width: 30%; }
-.col-hideout { left: 66%; width: 30%; }
-
-/* --- Colores --- */
-
-.purple { 
-    background-color: rgba(166, 68, 210, 0.8); 
-    border-color: #A644D2; 
+.timelineBlock{
+position:absolute;
+border-radius:10px;
+padding:8px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:white;
+font-size:12px;
+box-shadow:0 6px 12px rgba(0,0,0,.6);
+z-index:2;
+border:2px solid rgba(255,255,255,0.2);
+backdrop-filter:blur(6px);
+animation:aparecer .25s ease;
 }
 
-.orange { 
-    background-color: rgba(243, 146, 0, 0.8); 
-    border-color: #F39200; 
+/* COLUMNAS */
+
+.col-picnic{left:2%;width:30%;}
+.col-jogo{left:34%;width:30%;}
+.col-hideout{left:66%;width:30%;}
+
+/* COLORES */
+
+.purple{background:rgba(166,68,210,.85);}
+.orange{background:rgba(243,146,0,.85);}
+.lightblue{background:rgba(75,192,244,.85);}
+
+/* BOTON */
+
+.btn-borrar{
+background:white;
+border:none;
+color:black;
+border-radius:50%;
+width:20px;
+height:20px;
+font-size:10px;
+cursor:pointer;
+font-weight:bold;
 }
 
-.lightblue { 
-    background-color: rgba(75, 192, 244, 0.8); 
-    border-color: #4BC0F4; 
+.btn-borrar:hover{
+background:red;
+color:white;
 }
 
-/* --- Botón borrar --- */
+/* ANIMACION */
 
-.btn-borrar {
-    background: white;
-    border: none;
-    color: black;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    font-size: 10px;
-    cursor: pointer;
-    font-weight: bold;
+@keyframes aparecer{
+from{opacity:0;transform:scale(.9);}
+to{opacity:1;transform:scale(1);}
 }
 
-.btn-borrar:hover {
-    background: red;
-    color: white;
-}
-
-/* --- Animación bloques --- */
-
-@keyframes aparecer {
-    from {
-        opacity: 0;
-        transform: scale(.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* --- Marca personal --- */
+/* MARCA */
 
 .marca{
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    background: linear-gradient(135deg,#bdff00,#00e5ff);
-    color: black;
-    font-weight: bold;
-    font-size: 14px;
-    padding: 8px 16px;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    z-index: 1000;
+position:fixed;
+bottom:15px;
+right:15px;
+background:linear-gradient(135deg,#bdff00,#00e5ff);
+color:black;
+font-weight:bold;
+font-size:14px;
+padding:8px 16px;
+border-radius:20px;
+box-shadow:0 4px 12px rgba(0,0,0,0.4);
 }
 
-.marca:hover{
-    transform: scale(1.05);
-    transition: 0.2s;
+/* MOVIL */
+
+@media(max-width:600px){
+
+header h1{font-size:1.5rem;}
+
+.show{
+font-size:11px;
+padding:8px;
 }
 
-/* --- Ajustes para celular --- */
-
-@media (max-width: 600px) {
-
-    header h1 { 
-        font-size: 1.5rem; 
-    }
-
-    .show { 
-        font-size: 11px; 
-        padding: 8px; 
-    }
+#mySchedule{
+min-width:700px;
+}
 
 }
